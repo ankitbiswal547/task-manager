@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import info from './data';
+
+import DragNDrop from './components/DragNDrop'
+
+const defaultData = info
 
 function App() {
+  const [data, setData] = useState();
+  useEffect(() => {
+    const arr = JSON.parse(localStorage.getItem("List") || "[]");
+    if (arr.length === 0) {
+      localStorage.setItem("List", JSON.stringify(defaultData));
+    }
+    setData(JSON.parse(localStorage.getItem("List") || "[]"));
+  }, [setData])
+
+
+  const formSubmitHandler = (task, id) => {
+    const arr = JSON.parse(localStorage.getItem("List") || "[]");
+    arr[id].items.push(task);
+    localStorage.setItem("List", JSON.stringify(arr));
+    setData(arr);
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DragNDrop onFormSubmit={formSubmitHandler} data={data} />
     </div>
   );
 }

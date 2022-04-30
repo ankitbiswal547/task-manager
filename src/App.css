@@ -1,38 +1,273 @@
-.App {
-  text-align: center;
+a {
+  text-decoration: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.group-title {
+  text-align: left;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.current {
+  background-color: #eee;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App {
+  width: 100%;
+  /* margin-top: 1em; */
+}
+
+
+/* Home page CSS starts */
+.home {
+  background-color: white;
+  width: 70%;
+  margin: auto;
+}
+
+.home-title {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #383630;
+}
+
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.home-container .cards {
+  width: 30%;
+}
+
+.actions-area,
+.tasks-area,
+.add-new-area {
+  width: 100%;
+  margin-bottom: 0.6em;
+}
+
+.actions-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cur-status {
+  padding: 0 0.4em;
+  border-radius: 3px;
+  color: #383630;
+  font-weight: 500;
+}
+
+.cur-status.not-started {
+  background: #FFCCD1;
+}
+
+.cur-status.in-progress {
+  background: #FBEECC;
+}
+
+.cur-status.completed {
+  background: #CCE7E1;
+}
+
+.cur-status-count {
+  margin-left: 1em;
+  font-size: 1em;
+  color: #C8C7C6;
+  font-weight: 500;
+}
+
+.actions-area-right {
+  display: flex;
+  align-items: center;
+}
+
+.fa-solid.fa-ellipsis,
+.fa-solid.fa-plus,
+.fa-solid.fa-xmark {
+  font-size: 1.3em;
+  color: #C8C7C6;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.fa-solid.fa-plus,
+.fa-solid.fa-xmark {
+  margin-left: 0.6em;
+  font-size: 1.1em;
+}
+
+.fa-solid.fa-ellipsis:hover,
+.fa-solid.fa-plus:hover,
+.fa-solid.fa-xmark:hover {
+  color: #383630;
+}
+
+.each-task {
+  border: 1px solid #E1E1E1;
+  width: 100%;
+  margin: auto;
+  padding: 0.5em;
+  border-radius: 5px;
+  box-shadow: 0.5px 1px 4px #e1e1e1;
+  color: #383630;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  cursor: move;
+}
+
+.new-task-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.9em;
+  color: #cacac8;
+  font-weight: 100;
+  display: flex;
+  align-items: baseline;
+  margin-top: 1em;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.new-task-btn .fa-solid.fa-plus,
+.new-task-btn .fa-solid.fa-xmark {
+  margin-right: 0.4em;
+}
+
+.new-task-btn:hover {
+  color: #383630;
+}
+
+.new-task-btn:hover .fa-solid.fa-plus,
+.new-task-btn:hover .fa-solid.fa-xmark {
+  color: #383630;
+}
+
+.cancel-ns,
+.cancel-ip,
+.cancel-c {
+  display: none;
+}
+
+.grabbing * {
+  cursor: grabbing !important;
+}
+
+.home-form {
+  border: 1px solid #E1E1E1;
+  width: 100%;
+  margin: auto;
+  padding: 0.5em 0.7em;
+  border-radius: 5px;
+  box-shadow: 0.5px 1px 4px #e1e1e1;
+  color: #383630;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  min-height: 45px;
+  display: none;
+}
+
+.home-form h2 {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #383630;
+  margin-bottom: 0.5em;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.form-input label {
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+.form-input input {
+  width: 100%;
+  height: 30px;
+  margin: 0.4em auto;
+  border: 1px solid #b4b4b4;
+  padding: 0 0.5em;
+  color: #383630;
+}
+
+.home-form-btn {
+  width: 100%;
+  margin: auto;
+  display: block;
+  margin: 0.5em auto;
+  height: 35px;
+  background: black;
+  border: none;
+  color: white;
+  letter-spacing: 0.05em;
+  border-radius: 3px;
+}
+
+.active {
+  display: block;
+}
+
+.msg-span {
+  text-align: center;
+  color: blue;
+  width: 100%;
+  display: block;
+}
+
+/* Home page CSS ends */
+@media(max-width: 539px) {
+  .home {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .home-container .cards {
+    width: 100%;
+  }
+}
+
+@media(min-width: 540px) {
+  .home {
+    width: 100%;
+  }
+}
+
+@media(min-width: 769px) {
+  .home {
+    width: 90%;
+  }
+}
+
+@media(min-width: 1000px) {
+  .home {
+    width: 75%;
+  }
+}
+
+@media(min-width: 1100px) {
+  .home {
+    width: 70%;
   }
 }
